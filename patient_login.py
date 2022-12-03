@@ -4,7 +4,7 @@ from mysql import *
 import mysql.connector as mysql
 from PIL import ImageTk,Image
 
-def staff_login(username,password): 
+def patient_login(username,password): 
     #connect to mysql
     conn = mysql.connect(host="localhost",user="root",password="microsoft123")
         
@@ -12,14 +12,14 @@ def staff_login(username,password):
     cursor = conn.cursor()
         
     #check username via sql query
-    sql_query_username = ("SELECT staff_ic FROM patient_signup.staff_login WHERE staff_ic = '"+username+"'")
+    sql_query_username = ("SELECT patient_ic FROM patient_signup.patient_login WHERE patient_ic = '"+username+"'")
     #execute cursor
-    cursor  .execute(sql_query_username)
+    cursor.execute(sql_query_username)
     #fetch results
     username_result = cursor.fetchall()
         
     #check password via sql query
-    sql_query_password = ("SELECT staff_password FROM patient_signup.staff_login WHERE staff_password = '"+password+"'")
+    sql_query_password = ("SELECT patient_password FROM patient_signup.patient_login WHERE patient_password = '"+password+"'")
     #execute cursor
     cursor.execute(sql_query_password)
     #fetch results
