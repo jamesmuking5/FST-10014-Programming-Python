@@ -118,8 +118,9 @@ def signup(root):
             MessageBox.showerror("Empty fields!","All fields must be filled!") 
         else:
             confirmed_submit_signup()
-            MessageBox.showinfo("Welcome.","Welcome to My Clinical Board. You can now sign in with your IC and password.")
-    
+            MessageBox.askquestion("Welcome.","Welcome to My Clinical Board. You can now sign in with your IC and password.")
+            root_signup.destroy()      
+
     #submit button
     submit_button = Button(root_signup,text="Submit",width=10,command=submit_signup, pady=10).grid(row=12,column=3)
     
