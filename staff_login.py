@@ -4,7 +4,7 @@ from mysql import *
 import mysql.connector as mysql
 from PIL import ImageTk,Image
 
-def staff_login(): 
+def staff_login(username,password): 
     #connect to mysql
     conn = mysql.connect(host="localhost",user="root",password="microsoft123")
         
