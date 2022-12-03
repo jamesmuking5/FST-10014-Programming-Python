@@ -6,6 +6,3 @@ import mysql.connector as mysql
 from PIL import ImageTk,Image
 
 def signup():
-    root_signup = Tk()
-    root_signup.title("New User Signup")
-    root_signup.geometry("1280x720")

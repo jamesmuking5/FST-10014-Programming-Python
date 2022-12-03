@@ -3,7 +3,8 @@ import tkinter.messagebox as MessageBox
 from mysql import *
 import mysql.connector as mysql
 from PIL import ImageTk,Image
- 
+
+global root
 root = Tk()
 root.title("MCB Login")
 root.geometry("250x350")
@@ -88,10 +89,15 @@ login_button.grid(row=7, column=1, columnspan=2)
 empty_frame_1 = Frame(root,width=100,height=30).grid(row=6,column=0,columnspan=7)
 empty_frame_2 = Frame(root,width=30).grid(row=7,column=0)
 
-import signup
+def click_signup():
+    root_signup = Toplevel(root)
+    root_signup.title("New User Signup")
+    root_signup.geometry("1280x720")
+    import signup
+    
 
 #creating a signup button
-signup_button = Button(root, text="Sign-up", width=10, command=signup)
+signup_button = Button(root, text="Sign-up", width=10, command=click_signup)
 signup_button.grid(row=7, column=4, columnspan=2)
  
 #starting the main loop
