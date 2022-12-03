@@ -35,7 +35,6 @@ def patient_login(username,password):
     print(password_result)
         
     if str(username_check) == str(username_result) and str(password_check) == str(password_result):
-        MessageBox.showinfo("Placeholder","To add new window to Home")
         return TRUE
     else:
         return FALSE

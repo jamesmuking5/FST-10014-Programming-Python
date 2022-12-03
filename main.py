@@ -43,46 +43,51 @@ patient_login = Radiobutton(root, text="Patient", variable=staff_or_patient, val
 
 
 #create function for login button
-global tries
-tries = 3
+tries=3
 def login():    
     username = username_entry.get()
     password = password_entry.get()
     print(staff_or_patient.get())
-        
-    while tries > 0:
-        if (username=="" or password==""):
-            MessageBox.showinfo("Oops!","All fields are required.")
-            break
+    
+    global tries
+    
+    if tries>0 and (username=="" or password==""):
+        MessageBox.showinfo("Oops!","All fields are required.")
+                    
+    #check if user exist
+    elif tries>0 and (staff_or_patient.get() == str(1)):
+        #Import staff_login module
+        import staff_login
+        if staff_login.staff_login(username,password)==TRUE:            
+            print("Should open home")
+        elif staff_login.staff_login(username,password)==FALSE:
+            tries-=1
+            MessageBox.showerror("Wrong.","Wrong username and password. You have "+str(tries)+" tries left.")
+        else:
+            MessageBox.showerror("Error.","Please contact IT.")
+               
+    elif tries>0 and (staff_or_patient.get() == str(2)):
+        #Import patient_login module
+        import patient_login
+        if patient_login.patient_login(username,password)==TRUE:
+            print("Should open home")
+        elif patient_login.patient_login(username,password)==FALSE:
+            tries-=1
+            MessageBox.showerror("Wrong.","Wrong username and password. You have "+str(tries)+" tries left.")
+        else:
+            MessageBox.showerror("Error.","Please contact IT.")
             
-        #check if user exist
-        elif staff_or_patient.get() == str(1):
-            #Import staff_login module
-            import staff_login
-            staff_login.staff_login(username,password)
-            if TRUE:
-                break
-            if FALSE:
-                tries-=1
-                break   
-        elif staff_or_patient.get() == str(2):
-            #Import patient_login module
-            import patient_login
-            patient_login.patient_login(username,password)
-            if TRUE:
-                break
-            else:
-                tries-=1
-                break
+    elif tries<=0:
+        MessageBox.showwarning("Try Limit.","You have reached the max amount of tries. Please try again later.")
+    
     else:
-        MessageBox.showwarning("Try Limit.","You have reached the max amount of tries.")
+        MessageBox.showerror("Error.","This should not happen fam.")
         
 #creating a login button
 login_button = Button(root, text="Login", width=10, command=login)
 login_button.grid(row=8, column=1, columnspan=2)
 
 #shaping frames
-# empty_frame_1 = Frame(root,width=100,height=30).grid(row=6,column=0,columnspan=7)
 empty_frame_1 = Frame(root,width=30).grid(row=7,column=0)
 empty_frame_2 = Frame(root, height=30).grid(row=7, column=4)
 
