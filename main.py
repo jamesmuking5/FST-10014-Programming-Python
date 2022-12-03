@@ -1,6 +1,7 @@
 # import libraries
 import tkinter as tk
 import mysql.connector as mysql
+import signup_module
 
 # create window
 window = tk.Tk()
@@ -21,23 +22,7 @@ username_entry.grid(row=0, column=1)
 password_entry = tk.Entry(window, show='*')
 password_entry.grid(row=1, column=1)
 
-# function
-def login():
-    username = username_entry.get()
-    password = password_entry.get()
-
-    # connect to mysql
-    conn = mysql.connect(
-        host="localhost",
-        user=username,
-        passwd=password
-    )
-
-    cursor = conn.cursor()
-    cursor.execute("SELECT VERSION()")
-
-    data = cursor.fetchone()
-    print("Database version : %s " % data)
+login(username_entry.get(), password_entry.get())
 
 # button
 login_button = tk.Button(window, text="Login", command=login)
