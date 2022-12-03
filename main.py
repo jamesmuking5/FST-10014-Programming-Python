@@ -22,7 +22,6 @@ password_label = Label(root, text="Password:")
 
 #creating menu
 
-
 #creating entries
 username_entry = Entry(root)
 password_entry = Entry(root, show="*")
