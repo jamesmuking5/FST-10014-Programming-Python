@@ -8,7 +8,7 @@ from PIL import ImageTk,Image
 def signup(root):
     root_signup = Toplevel(root)
     root_signup.title("New User Signup")
-    root_signup.geometry("1280x720")
+    root_signup.geometry("400x400")
     
     #creating labels
     title_label = Label(root_signup,text="My Clinical Board Sign-up",width=20,padx=10,pady=10)
