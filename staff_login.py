@@ -24,7 +24,7 @@ def staff_login(username,password):
     cursor.execute(sql_query_password)
     #fetch results
     password_result = cursor.fetchall()
-        
+    
     print(username)
     print(password)
     username_check = ("[('"+username+"',)]")
@@ -35,6 +35,6 @@ def staff_login(username,password):
     print(password_result)
         
     if str(username_check) == str(username_result) and str(password_check) == str(password_result):
-        MessageBox.showinfo("You have login.")
+        MessageBox.showinfo("Placeholder","To add new window to Home")
     else:
         MessageBox.showerror("Oops","Wrong username and password. Please try again.")

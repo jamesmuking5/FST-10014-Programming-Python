@@ -59,10 +59,8 @@ empty_frame_1 = Frame(root,width=100,height=30).grid(row=6,column=0,columnspan=7
 empty_frame_2 = Frame(root,width=30).grid(row=7,column=0)
 
 def click_signup():
-    root_signup = Toplevel(root)
-    root_signup.title("New User Signup")
-    root_signup.geometry("1280x720")
     import signup
+    signup.signup(root)
     
 
 #creating a signup button
