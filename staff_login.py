@@ -24,6 +24,7 @@ def staff_login(username,password):
     cursor.execute(sql_query_password)
     #fetch results
     password_result = cursor.fetchall()
+    cursor.close()
     
     print(username)
     print(password)

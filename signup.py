@@ -12,7 +12,7 @@ def signup(root):
     
     #creating labels
     title_label = Label(root_signup,text="My Clinical Board Sign-up",width=20,padx=10,pady=10)
-    name_label = Label(root_signup,text="First Name:",pady=5)
+    name_label = Label(root_signup,text="Full Name:",pady=5)
     ic_label = Label(root_signup,text="Identification Card Number:",pady=5)
     password_label = Label(root_signup,text="New Password:",pady=5)
     password_label_check = Label(root_signup,text="New Password again:",pady=5)
@@ -39,8 +39,8 @@ def signup(root):
     #creating inputs
     name_entry = Entry(root_signup)
     ic_entry  = Entry(root_signup)
-    password_entry  = Entry(root_signup)
-    password_check_entry  = Entry(root_signup)
+    password_entry  = Entry(root_signup, show="*")
+    password_check_entry  = Entry(root_signup, show="*")
     weight_entry = Entry(root_signup)
     height_entry = Entry(root_signup)
     bmi_entry  = Entry(root_signup)
@@ -94,29 +94,41 @@ def signup(root):
             MessageBox.showinfo("Ehe","Just kidding.")
                 
     #reset button
-    reset_all = Button(root_signup,text="Reset All",width=10,command=reset_signup).grid(row=12,column=1)
+    reset_all = Button(root_signup,text="Reset All",width=10,command=reset_signup, pady=10).grid(row=12,column=1)
     
-    #submit button function
-    def submit_signup():
+ 
+    #confirmed submit
+    def confirmed_submit_signup():
         #connect to mysql
         conn = mysql.connect(host="localhost",user="root",password="microsoft123")
         #create cursor
         cursor = conn.cursor()
         #define input variable
-        sql_input_patient_data = ("INSERT INTO patient_signup.patient_login (patient_ic, patient_password, full_name, patient_weight, patient_height, bmi, allergies, patient_contact, patient_emergency) VALUES ('"+ic_entry.get()+"', '"+password_entry.get()+"', '"+name_entry.get()+"', '"+weight_entry.get()+"', '"+height_entry.get()+"', '"+bmi_entry.get()+"', '"+allergy_entry.get()+"', '"+contact_num_entry.get()+"', '"+emer_contact_num_entry.get()+"');")
+        sql_input_patient_data = ("INSERT INTO patient_signup.patient_login (patient_ic, patient_password, full_name, patient_weight, patient_height, bmi, allergies, patient_contact, patient_emergency) VALUES ('"+ic_entry.get()+"', '"+password_entry.get()+"', '"+name_entry.get()+"', '"+weight_entry.get()+"', '"+height_entry.get()+"', '"+bmi_entry.get()+"', '"+allergy_entry.get()+"', '"+bmi_entry.get()+"', '"+emer_contact_num_entry.get()+"');")
         #execute data
         cursor.execute(sql_input_patient_data)
+        conn.commit()
+        cursor.close()
+        
+    #submit button function
+    def submit_signup():
+        if password_entry.get() != password_check_entry.get():
+            MessageBox.showerror("Warning!","Passwords do not match! Please try again.")
+        elif (name_entry.get()=="" or ic_entry.get()=="" or password_entry.get()=="" or weight_entry.get()=="" or weight_entry.get()=="" or height_entry.get()=="" or allergy_entry.get()=="" or bmi_entry.get()=="" or bmi_entry.get()=="" or emer_contact_num_entry.get()==""):
+            MessageBox.showerror("Empty fields!","All fields must be filled!") 
+        else:
+            confirmed_submit_signup()
+            MessageBox.showinfo("Welcome.","Welcome to My Clinical Board. You can now sign in with your IC and password.")
     
     #submit button
-    submit_button = Button(root_signup,text="Submit",width=10,command=submit_signup).grid(row=12,column=3)
+    submit_button = Button(root_signup,text="Submit",width=10,command=submit_signup, pady=10).grid(row=12,column=3)
     
     #cancel button function
     def cancel():
         root_signup.destroy()
         
     #cancel button
-    cancel_button = Button(root_signup,text="Cancel",width=10,command=cancel).grid(row=12,column=0)
-    
+    cancel_button = Button(root_signup,text="Cancel",width=10,command=cancel, pady=10).grid(row=12,column=0)
     #making an empty frame
     # signup_frame = Frame(root_signup).grid(row=0,column=0)
     # #making picture
