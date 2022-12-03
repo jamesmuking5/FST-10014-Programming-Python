@@ -4,7 +4,6 @@ from mysql import *
 import mysql.connector as mysql
 from PIL import ImageTk,Image
 
-global root
 root = Tk()
 root.title("MCB Login")
 root.geometry("250x400")
@@ -20,7 +19,10 @@ image_container.grid(row=1,column=0)
 main_label = Label(logo_frame,text="My Clinical Board Login")
 username_label = Label(root, text="Username:", pady=10)
 password_label = Label(root, text="Password:")
- 
+
+#creating menu
+
+
 #creating entries
 username_entry = Entry(root)
 password_entry = Entry(root, show="*")
@@ -47,7 +49,6 @@ tries=3
 def login():    
     username = username_entry.get()
     password = password_entry.get()
-    print(staff_or_patient.get())
     
     global tries
     
@@ -78,7 +79,7 @@ def login():
             MessageBox.showerror("Error.","Please contact IT.")
             
     elif tries<=0:
-        MessageBox.showwarning("Try Limit.","You have reached the max amount of tries. Please try again later.")
+        MessageBox.showwarning("Try Limit.","You have reached the max amount of tries. Please try again later.")        
     
     else:
         MessageBox.showerror("Error.","This should not happen fam.")
