@@ -4,6 +4,7 @@ from mysql import *
 import mysql.connector as mysql
 from PIL import ImageTk,Image
 from time import time
+import home_patient
 
 root = Tk()
 root.title("MCB Login")
@@ -47,7 +48,8 @@ patient_login = Radiobutton(root, text="Patient", variable=staff_or_patient, val
 #create function for login button
 tries=3
 def login():
-    global username    
+    global username
+    
     username = username_entry.get()
     password = password_entry.get()
     
@@ -72,7 +74,8 @@ def login():
         #Import patient_login module
         import patient_login
         if patient_login.patient_login(username,password)==TRUE:
-            print("Should open home for patients")
+            print("Should open home for patients")            
+            home_patient.root_home(root,username)
         elif patient_login.patient_login(username,password)==FALSE:
             tries-=1
             MessageBox.showerror("Wrong.","Wrong username and password. You have "+str(tries)+" tries left.")
