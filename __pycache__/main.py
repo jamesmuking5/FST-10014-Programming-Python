@@ -13,7 +13,6 @@ root.geometry("250x400")
 #making an empty frame
 logo_frame = Frame(root)
 #making picture
-global img
 img = ImageTk.PhotoImage(Image.open("./logo.png"))
 image_container= Label(logo_frame,image=img)
 image_container.grid(row=1,column=0)
@@ -75,8 +74,8 @@ def login():
         #Import patient_login module
         import patient_login
         if patient_login.patient_login(username,password)==TRUE:
-            print("Should open home for patients")
-            home_patient.root_home(root,username,img)
+            print("Should open home for patients")            
+            home_patient.root_home(root,username)
         elif patient_login.patient_login(username,password)==FALSE:
             tries-=1
             MessageBox.showerror("Wrong.","Wrong username and password. You have "+str(tries)+" tries left.")

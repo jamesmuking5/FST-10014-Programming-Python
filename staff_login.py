@@ -14,7 +14,7 @@ def staff_login(username,password):
     #check username via sql query
     sql_query_username = ("SELECT staff_ic FROM patient_signup.staff_login WHERE staff_ic = '"+username+"'")
     #execute cursor
-    cursor  .execute(sql_query_username)
+    cursor.execute(sql_query_username)
     #fetch results
     username_result = cursor.fetchall()
         

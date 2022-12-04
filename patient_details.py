@@ -36,7 +36,6 @@ def pt_details_pt_view(root_home,username):
         print(patient_details_tuple)
 
     full_name=patient_details_tuple[3]
-    patient_ic=patient_details_tuple[1]
     blood_pressure=patient_details_tuple[4]
     spiro_oxy=patient_details_tuple[5]
     heart_rate=patient_details_tuple[6]
@@ -51,7 +50,7 @@ def pt_details_pt_view(root_home,username):
     patient_emer_contact=patient_details_tuple[15]
     
     #creating labels
-    welcome_text= Label(pt_details_pt_view, text="Welcome, "+full_name)
+    welcome_text= Label(pt_details_pt_view, font=("Times",12), text="Your patient details, "+full_name)
     ic_label = Label(pt_details_pt_view,text="Identification Card Num.:")
     blood_pressure_label = Label(pt_details_pt_view,text="Blood Pressure:")
     spiro_oxy_label = Label(pt_details_pt_view,text="SpO2:")
@@ -67,7 +66,7 @@ def pt_details_pt_view(root_home,username):
     patient_emer_contact_label = Label(pt_details_pt_view,text="Patient Emergency Contact Num.:")
 
     #setting grid position for labels
-    welcome_text.grid(row=0,column=0)
+    welcome_text.grid(row=0,column=0,columnspan=3)
     ic_label.grid(row=2,column=0)
     blood_pressure_label.grid(row=3,column=0)
     spiro_oxy_label.grid(row=4,column=0)
@@ -83,7 +82,7 @@ def pt_details_pt_view(root_home,username):
     patient_emer_contact_label.grid(row=14,column=0)
 
     #creating labels for output
-    ic_output = Label(pt_details_pt_view,text=ic_label)
+    ic_output = Label(pt_details_pt_view,text=username)
     blood_pressure_output= Label(pt_details_pt_view,text=blood_pressure)
     spiro_oxy_output= Label(pt_details_pt_view,text=spiro_oxy)
     heart_rate_output= Label(pt_details_pt_view,text=heart_rate)
@@ -97,18 +96,18 @@ def pt_details_pt_view(root_home,username):
     patient_contact_output= Label(pt_details_pt_view,text=patient_contact)
     patient_emer_contact_output= Label(pt_details_pt_view,text=patient_emer_contact)
     
-    ic_output.grid(row=2,column=1)
-    blood_pressure_output.grid(row=3,column=1)
-    spiro_oxy_output.grid(row=4,column=1)
-    heart_rate_output.grid(row=5,column=1)
-    temperature_output.grid(row=6,column=1)
-    current_disease_output.grid(row=7,column=1)
-    medical_history_output.grid(row=8,column=1)
-    patient_weight_output.grid(row=9,column=1)
-    patient_height_output.grid(row=10,column=1)
-    patient_bmi_output.grid(row=11,column=1)
-    patient_allergies_ouput.grid(row=12,column=1)
-    patient_contact_output.grid(row=13,column=1)
-    patient_emer_contact_output.grid(row=14,column=1)
+    ic_output.grid(row=2,column=2)
+    blood_pressure_output.grid(row=3,column=2)
+    spiro_oxy_output.grid(row=4,column=2)
+    heart_rate_output.grid(row=5,column=2)
+    temperature_output.grid(row=6,column=2)
+    current_disease_output.grid(row=7,column=2)
+    medical_history_output.grid(row=8,column=2)
+    patient_weight_output.grid(row=9,column=2)
+    patient_height_output.grid(row=10,column=2)
+    patient_bmi_output.grid(row=11,column=2)
+    patient_allergies_ouput.grid(row=12,column=2)
+    patient_contact_output.grid(row=13,column=2)
+    patient_emer_contact_output.grid(row=14,column=2)
 
 # def pt_details_staff_view(root_home,username):
