@@ -26,7 +26,7 @@ def patient_details_collect(username):
 def pt_details_pt_view(root_home,username):
     pt_details_pt_view = Toplevel(root_home)
     pt_details_pt_view.title("MCB: Your details")
-    pt_details_pt_view.geometry("1280x720")
+    pt_details_pt_view.geometry("430x350")
 
     #running SQL query in function for patient details
     weird_list_tuple = patient_details_collect(username)
@@ -110,4 +110,11 @@ def pt_details_pt_view(root_home,username):
     patient_contact_output.grid(row=13,column=2)
     patient_emer_contact_output.grid(row=14,column=2)
 
+    def john():
+        pt_details_pt_view.destroy()
+        
+    #Close button
+    close_button_pt_details_pt_view = Button(pt_details_pt_view,text="Close",command=john,width=10).grid(row=15,column=1)
+    
+    
 # def pt_details_staff_view(root_home,username):
