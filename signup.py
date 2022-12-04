@@ -130,6 +130,10 @@ def signup(root):
         
     #cancel button
     cancel_button = Button(root_signup,text="Cancel",width=10,command=cancel, pady=10).grid(row=12,column=0)
+    
+    #adding an empty frame to the button of the buttons
+    empty_padding_frame = Frame(root_signup,height=30).grid(row=13,column=0,columnspan=3)
+    
     #making an empty frame
     # signup_frame = Frame(root_signup).grid(row=0,column=0)
     # #making picture
