@@ -15,7 +15,7 @@ root.geometry("250x400")
 logo_frame = Frame(root)
 #making picture
 global img
-img = ImageTk.PhotoImage(Image.open("./logo.png"))
+img = ImageTk.PhotoImage(Image.open("./images/logo.png"))
 image_container= Label(logo_frame,image=img)
 image_container.grid(row=1,column=0)
 

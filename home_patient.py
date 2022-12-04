@@ -42,9 +42,10 @@ def root_home(root,username,img):
    def start_patient_details():
       import patient_details
       patient_details.pt_details_pt_view(root_home,username)
-   
+   def billing():
+      MessageBox.showerror("Not lazy to do.","Work in Progress, will be available at next update.")
    #making the 4 main buttons
-   billing_button = Button(root_home, text="Billing Information", width="15", padx=10,pady=10)
+   billing_button = Button(root_home, text="Billing Information", width="15", padx=10,pady=10, command=billing)
    patient_details_button = Button(root_home, text="Your Details", command=start_patient_details, width="15", padx=10,pady=10)
    hotline_button = Button(root_home, text="Hotline", width="15", padx=10,pady=10)
    faq_button = Button(root_home, text="F.A.Q.", width="15", padx=10,pady=10)
