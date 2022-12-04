@@ -41,11 +41,11 @@ def root_home(root,username,img):
    #Define button command for patient details
    def start_patient_details():
       import patient_details
-      patient_details.pt_details_pt_view(root_home,username)
+      patient_details.pt_details_staff_view(root_home,username)
    
    #making the 4 main buttons
    billing_button = Button(root_home, text="Billing Information", width="15", padx=10,pady=10)
-   patient_details_button = Button(root_home, text="Your Details", command=start_patient_details, width="15", padx=10,pady=10)
+   patient_details_button = Button(root_home, text="Search for Patient", command=start_patient_details, width="15", padx=10,pady=10)
    hotline_button = Button(root_home, text="Hotline", width="15", padx=10,pady=10)
    faq_button = Button(root_home, text="F.A.Q.", width="15", padx=10,pady=10)
    

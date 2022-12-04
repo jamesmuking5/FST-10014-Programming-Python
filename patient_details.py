@@ -129,7 +129,11 @@ def staff_details_collect(username):
     staff_details = cursor.fetchall()
     conn.commit()
     cursor.close()
-    return staff_details
+    staff_details
+    for x in staff_details:
+        print(x)
+    for name in x:
+        return name
  
 #Function for updating SQL on patient's details
 def patient_check_right_wrong(pt_username):
@@ -161,7 +165,7 @@ def pt_details_staff_view(root_home,username):
     #Search bar for patient's IC
     search_bar = Entry(pt_details_staff_view)
     search_bar.grid(row=1, column=0, columnspan=2)
-    search_bar.insert("Search Patient via I.C.")
+    search_bar.insert(0,"Search Patient via I.C.")
     
     #creating labels
     welcome_text= Label(pt_details_staff_view, font=("Times",12), text="Search for patient details, "+staff_details_collect(username))
@@ -232,20 +236,32 @@ def pt_details_staff_view(root_home,username):
         print(weird_list_tuple) 
         for patient_details_tuple in weird_list_tuple:
             print(patient_details_tuple)
-            
-            name_output.insert(patient_details_tuple[3])
-            blood_pressure_output.insert(patient_details_tuple[4])
-            spiro_oxy_output.insert(patient_details_tuple[5])
-            heart_rate_output.insert(patient_details_tuple[6])
-            temperature_output.insert(patient_details_tuple[7])
-            current_disease_output.insert(patient_details_tuple[8])
-            medical_history_output.insert(patient_details_tuple[9])
-            patient_weight_output.insert(patient_details_tuple[10])
-            patient_height_output.insert(patient_details_tuple[11])
-            patient_bmi_output.insert(patient_details_tuple[12])
-            patient_allergies_output.insert(patient_details_tuple[13])
-            patient_contact_output.insert(patient_details_tuple[14])
-            patient_emer_contact_output.insert(patient_details_tuple[15])
+            name_output.delete(0, END)
+            name_output.insert(0,patient_details_tuple[3])
+            blood_pressure_output.delete(0, END)
+            blood_pressure_output.insert(0,patient_details_tuple[4])
+            spiro_oxy_output.delete(0, END)
+            spiro_oxy_output.insert(0,patient_details_tuple[5])
+            heart_rate_output.delete(0, END)
+            heart_rate_output.insert(0,patient_details_tuple[6])
+            temperature_output.delete(0, END)
+            temperature_output.insert(0,patient_details_tuple[7])
+            current_disease_output.delete(0, END)
+            current_disease_output.insert(0,patient_details_tuple[8])
+            medical_history_output.delete(0, END)
+            medical_history_output.insert(0,patient_details_tuple[9])
+            patient_weight_output.delete(0, END)
+            patient_weight_output.insert(0,patient_details_tuple[10])
+            patient_height_output.delete(0, END)
+            patient_height_output.insert(0,patient_details_tuple[11])
+            patient_bmi_output.delete(0, END)
+            patient_bmi_output.insert(0,patient_details_tuple[12])
+            patient_allergies_output.delete(0, END)
+            patient_allergies_output.insert(0,patient_details_tuple[13])
+            patient_contact_output.delete(0, END)
+            patient_contact_output.insert(0,patient_details_tuple[14])
+            patient_emer_contact_output.delete(0, END)
+            patient_emer_contact_output.insert(0,patient_details_tuple[15])
             
     def push_update_patient_data():        
         #connect to mysql
@@ -253,7 +269,10 @@ def pt_details_staff_view(root_home,username):
         #create cursor        
         cursor = conn.cursor()
         #define input variable        
-        sql_input_patient_data = ("INSERT INTO patient_signup.patient_login (full_name, blood_pressure, spo2, heart_rate, temperature, current_diseases, medical_history, patient_weight, patient_height, bmi, allergies, patient_contact, patient_emergency) VALUES ('"+name_output.get()+"', '"+blood_pressure_output.get()+"', '"+spiro_oxy_output.get()+"', '"+heart_rate_output.get()+"', '"+temperature_output.get()+"', '"+current_disease_output.get()+"', '"+medical_history_output.get()+"', '"+patient_weight_output.get()+"', '"+patient_height_output.get()+"', '"+patient_bmi_output.get()+"', '"+patient_allergies_output.get()+"', '"+patient_contact_output.get()+"', '"+patient_emer_contact_output.get()+"');")
+        sql_input_patient_data = ("UPDATE patient_signup.patient_login SET full_name='"+name_output.get()+"', blood_pressure='"+blood_pressure_output.get()+"', spo2='"+spiro_oxy_output.get()+"', heart_rate='"+heart_rate_output.get()+"', temperature='"+temperature_output.get()+"', current_diseases='"+current_disease_output.get()+"', medical_history='"+medical_history_output.get()+"', patient_weight='"+patient_weight_output.get()+"', patient_height='"+patient_height_output.get()+"', bmi='"+patient_bmi_output.get()+"', allergies='"+patient_allergies_output.get()+"', patient_contact='"+patient_contact_output.get()+"', patient_emergency='"+patient_emer_contact_output.get()+"' WHERE patient_ic='"+search_bar.get()+"'")
+        
+        print(search_bar.get())
+        print(sql_input_patient_data)
         #execute data
         cursor.execute(sql_input_patient_data)
         conn.commit()
@@ -280,5 +299,7 @@ def pt_details_staff_view(root_home,username):
        
     #Retrieve Patient Data
     retrieve_patient_data_button = Button(pt_details_staff_view, text="Retrieve",command=retrieve_patient_data,width=10).grid(row=1,column=2)
+    #Update Patient Data
+    update_patient_data_button = Button(pt_details_staff_view,text="Update",command=update_patient_data).grid(row=16,column=1)
     #Close button
-    close_button_pt_details_staff_view = Button(pt_details_staff_view,text="Close",command=john,width=10).grid(row=15,column=3)
+    close_button_pt_details_staff_view = Button(pt_details_staff_view,text="Close",command=john,width=10).grid(row=16,column=3)
