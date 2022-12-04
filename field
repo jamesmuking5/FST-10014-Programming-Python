@@ -1,0 +1,20 @@
+from tkinter import *
+import tkinter.messagebox as MessageBox
+from mysql import *
+import mysql.connector as mysql
+from PIL import ImageTk,Image
+from time import time
+
+    ic_output.insert(username)
+    blood_pressure_output.insert(blood_pressure)
+    spiro_oxy_output.insert(spiro_oxy)
+    heart_rate_output.insert(heart_rate)
+    temperature_output.insert(temperature)
+    current_disease_output.insert(current_disease)
+    medical_history_output.insert(medical_history)
+    patient_weight_output.insert(patient_weight)
+    patient_height_output.insert(patient_height)
+    patient_bmi_output.insert(patient_bmi)
+    patient_allergies_ouput.insert(patient_allergies)
+    patient_contact_output.insert(patient_contact)
+    patient_emer_contact_output.insert(patient_emer_contact)
