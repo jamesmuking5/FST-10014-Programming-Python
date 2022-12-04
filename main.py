@@ -46,7 +46,9 @@ patient_login = Radiobutton(root, text="Patient", variable=staff_or_patient, val
 
 #create function for login button
 tries=3
-def login():    
+def login():
+    global username
+    global password
     username = username_entry.get()
     password = password_entry.get()
     
