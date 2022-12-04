@@ -12,8 +12,10 @@ def root_home(root,username,img):
    
    #Make Sql Query for Full_name     
    conn = mysql.connect(host="localhost",user="root",password="microsoft123")
+   
    #create cursor
    cursor = conn.cursor()
+   
    #define input variable
    cursor.execute("SELECT * FROM patient_signup.patient_login WHERE patient_ic = '"+ username +"'")
    patient_login = cursor.fetchall()

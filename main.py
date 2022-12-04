@@ -5,6 +5,7 @@ import mysql.connector as mysql
 from PIL import ImageTk,Image
 from time import time
 import home_patient
+import home_staff
 
 root = Tk()
 root.title("MCB Login")
@@ -65,6 +66,7 @@ def login():
         import staff_login
         if staff_login.staff_login(username,password)==TRUE:            
             print("Should open home for staff")
+            home_staff.root_home(root,username,img)
         elif staff_login.staff_login(username,password)==FALSE:
             tries-=1
             MessageBox.showerror("Wrong.","Wrong username and password. You have "+str(tries)+" tries left.")
