@@ -99,13 +99,17 @@ def signup(root):
  
     #confirmed submit
     def confirmed_submit_signup():
+        
         #connect to mysql
         conn = mysql.connect(host="localhost",user="root",password="microsoft123")
-        #create cursor
+        
+        #create cursor        
         cursor = conn.cursor()
-        #define input variable
+        
+        #define input variable        
         sql_input_patient_data = ("INSERT INTO patient_signup.patient_login (patient_ic, patient_password, full_name, patient_weight, patient_height, bmi, allergies, patient_contact, patient_emergency) VALUES ('"+ic_entry.get()+"', '"+password_entry.get()+"', '"+name_entry.get()+"', '"+weight_entry.get()+"', '"+height_entry.get()+"', '"+bmi_entry.get()+"', '"+allergy_entry.get()+"', '"+bmi_entry.get()+"', '"+emer_contact_num_entry.get()+"');")
         #execute data
+        
         cursor.execute(sql_input_patient_data)
         conn.commit()
         cursor.close()

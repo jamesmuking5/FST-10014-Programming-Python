@@ -47,8 +47,7 @@ patient_login = Radiobutton(root, text="Patient", variable=staff_or_patient, val
 #create function for login button
 tries=3
 def login():
-    global username
-    global password
+    global username    
     username = username_entry.get()
     password = password_entry.get()
     
@@ -62,7 +61,7 @@ def login():
         #Import staff_login module
         import staff_login
         if staff_login.staff_login(username,password)==TRUE:            
-            print("Should open home")
+            print("Should open home for staff")
         elif staff_login.staff_login(username,password)==FALSE:
             tries-=1
             MessageBox.showerror("Wrong.","Wrong username and password. You have "+str(tries)+" tries left.")
@@ -73,7 +72,7 @@ def login():
         #Import patient_login module
         import patient_login
         if patient_login.patient_login(username,password)==TRUE:
-            print("Should open home")
+            print("Should open home for patients")
         elif patient_login.patient_login(username,password)==FALSE:
             tries-=1
             MessageBox.showerror("Wrong.","Wrong username and password. You have "+str(tries)+" tries left.")
@@ -83,7 +82,7 @@ def login():
     elif tries<=0:
         MessageBox.showwarning("Try Limit.","You have reached the max amount of tries. Please try again later.")
     else:
-        MessageBox.showerror("Error.","This should not happen fam.")
+        MessageBox.showerror("Error.","This should not happen.     ")
         
 #creating a login button
 login_button = Button(root, text="Login", width=10, command=login)
