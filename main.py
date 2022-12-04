@@ -3,6 +3,7 @@ import tkinter.messagebox as MessageBox
 from mysql import *
 import mysql.connector as mysql
 from PIL import ImageTk,Image
+from time import time
 
 root = Tk()
 root.title("MCB Login")
@@ -78,8 +79,7 @@ def login():
             MessageBox.showerror("Error.","Please contact IT.")
             
     elif tries<=0:
-        MessageBox.showwarning("Try Limit.","You have reached the max amount of tries. Please try again later.")        
-    
+        MessageBox.showwarning("Try Limit.","You have reached the max amount of tries. Please try again later.")
     else:
         MessageBox.showerror("Error.","This should not happen fam.")
         
