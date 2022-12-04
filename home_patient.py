@@ -5,7 +5,7 @@ from mysql import *
 import mysql.connector as mysql
 from PIL import ImageTk,Image
 
-def home(root,username):
+def root_home(root,username):
     root_home = Toplevel(root)
     root_home.title ("Patient Details")
     root_home.geometry("1280x720")
