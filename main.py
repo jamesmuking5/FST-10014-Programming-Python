@@ -33,8 +33,6 @@ image_container.grid()
 username_label = CTkLabel(root,text="Username:",font=("Gadugi",15))
 password_label = CTkLabel(root,text="Password:",font=("Gadugi",15))
 
-
-
 #creating entries
 username_entry = CTkEntry(root)
 password_entry = CTkEntry(root, show="*")
