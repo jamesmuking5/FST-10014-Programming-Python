@@ -161,15 +161,15 @@ def patient_check_right_wrong(pt_username):
 def pt_details_staff_view(root_home,username):
     pt_details_staff_view = CTkToplevel(root_home)
     pt_details_staff_view.title("MCB: Staff View")
-    pt_details_staff_view.geometry("1280x720")               
+    pt_details_staff_view.geometry("450x850")               
     
     #Search bar for patient's IC
     search_bar = CTkEntry(pt_details_staff_view)
-    search_bar.grid(row=1, column=0, columnspan=2)
+    search_bar.grid(row=1, column=0,padx=20,ipadx=70,sticky="e")
     search_bar.insert(0,"Search Patient via I.C.")
     
     #creating labels
-    welcome_text= CTkLabel(pt_details_staff_view, font=("Times",12), text="Search for patient details, "+staff_details_collect(username))
+    welcome_text= CTkLabel(pt_details_staff_view, font=("Gadugi",18), text="Search for patient details, "+staff_details_collect(username),wraplength=400)
     name_label = CTkLabel(pt_details_staff_view,text="Patient's name:")
     blood_pressure_label = CTkLabel(pt_details_staff_view,text="Blood Pressure:")
     spiro_oxy_label = CTkLabel(pt_details_staff_view,text="SpO2:")
@@ -185,20 +185,20 @@ def pt_details_staff_view(root_home,username):
     patient_emer_contact_label = CTkLabel(pt_details_staff_view,text="Patient Emergency Contact Num.:")
 
     #setting grid position for labels
-    welcome_text.grid(row=0,column=0,columnspan=3)
-    name_label.grid(row=2,column=0)
-    blood_pressure_label.grid(row=3,column=0)
-    spiro_oxy_label.grid(row=4,column=0)
-    heart_rate_label.grid(row=5,column=0)
-    temperature_label.grid(row=6,column=0)
-    current_disease_label.grid(row=7,column=0)
-    medical_history_label.grid(row=8,column=0)
-    patient_weight_label.grid(row=9,column=0)
-    patient_height_label.grid(row=10,column=0)
-    patient_bmi_label.grid(row=11,column=0)
-    patient_allergies_label.grid(row=12,column=0)
-    patient_contact_label.grid(row=13,column=0)
-    patient_emer_contact_label.grid(row=14,column=0)
+    welcome_text.grid(row=0,column=0,columnspan=2,pady=80)
+    name_label.grid(row=2,column=0,padx=20,sticky="w")
+    blood_pressure_label.grid(row=3,column=0,padx=20,sticky="w")
+    spiro_oxy_label.grid(row=4,column=0,padx=20,sticky="w")
+    heart_rate_label.grid(row=5,column=0,padx=20,sticky="w")
+    temperature_label.grid(row=6,column=0,padx=20,sticky="w")
+    current_disease_label.grid(row=7,column=0,padx=20,sticky="w")
+    medical_history_label.grid(row=8,column=0,padx=20,sticky="w")
+    patient_weight_label.grid(row=9,column=0,padx=20,sticky="w")
+    patient_height_label.grid(row=10,column=0,padx=20,sticky="w")
+    patient_bmi_label.grid(row=11,column=0,padx=20,sticky="w")
+    patient_allergies_label.grid(row=12,column=0,padx=20,sticky="w")
+    patient_contact_label.grid(row=13,column=0,padx=20,sticky="w")
+    patient_emer_contact_label.grid(row=14,column=0,padx=20,sticky="w")
 
     #creating labels for output
     name_output = CTkEntry(pt_details_staff_view)
@@ -216,19 +216,19 @@ def pt_details_staff_view(root_home,username):
     patient_emer_contact_output= CTkEntry(pt_details_staff_view)
     
     #Position button grid
-    name_output.grid(row=2,column=2)
-    blood_pressure_output.grid(row=3,column=2)
-    spiro_oxy_output.grid(row=4,column=2)
-    heart_rate_output.grid(row=5,column=2)
-    temperature_output.grid(row=6,column=2)
-    current_disease_output.grid(row=7,column=2)
-    medical_history_output.grid(row=8,column=2)
-    patient_weight_output.grid(row=9,column=2)
-    patient_height_output.grid(row=10,column=2)
-    patient_bmi_output.grid(row=11,column=2)
-    patient_allergies_output.grid(row=12,column=2)
-    patient_contact_output.grid(row=13,column=2)
-    patient_emer_contact_output.grid(row=14,column=2)
+    name_output.grid(row=2,column=1)
+    blood_pressure_output.grid(row=3,column=1)
+    spiro_oxy_output.grid(row=4,column=1)
+    heart_rate_output.grid(row=5,column=1)
+    temperature_output.grid(row=6,column=1)
+    current_disease_output.grid(row=7,column=1)
+    medical_history_output.grid(row=8,column=1)
+    patient_weight_output.grid(row=9,column=1)
+    patient_height_output.grid(row=10,column=1)
+    patient_bmi_output.grid(row=11,column=1)
+    patient_allergies_output.grid(row=12,column=1)
+    patient_contact_output.grid(row=13,column=1)
+    patient_emer_contact_output.grid(row=14,column=1)
     
     #running SQL query in function to call patient database
     def retrieve_patient_data():
@@ -299,8 +299,8 @@ def pt_details_staff_view(root_home,username):
         pt_details_staff_view.destroy()
        
     #Retrieve Patient Data
-    retrieve_patient_data_button = CTkButton(pt_details_staff_view, text="Retrieve",command=retrieve_patient_data,width=10).grid(row=1,column=2)
+    retrieve_patient_data_button = CTkButton(pt_details_staff_view, text="Retrieve",command=retrieve_patient_data,width=10).grid(row=1,column=1,pady=50,padx=20,ipadx=70,sticky="")
     #Update Patient Data
-    update_patient_data_button = CTkButton(pt_details_staff_view,text="Update",command=update_patient_data).grid(row=16,column=1)
+    update_patient_data_button = CTkButton(pt_details_staff_view,text="Update",command=update_patient_data,fg_color="green").grid(row=16,column=1,padx=20,pady=10)
     #Close button
-    close_button_pt_details_staff_view = CTkButton(pt_details_staff_view,text="Close",command=john,width=10).grid(row=16,column=3)
+    close_button_pt_details_staff_view = CTkButton(pt_details_staff_view,text="Close",command=john,width=10,fg_color="red").grid(row=17,column=0,padx=20,ipadx=200,pady=30,columnspan=2)

@@ -96,7 +96,8 @@ def login():
             MessageBox.showerror("Wrong.","Wrong username and password. You have "+str(tries)+" tries left.")
         else:
             MessageBox.showerror("Error.","Please contact IT.")
-            
+    elif tries>0 and (staff_or_patient.get() == str("")):
+        MessageBox.showerror("Account.","Please choose if you are logging as staff or patient.")        
     elif tries<=0:
         MessageBox.showwarning("Try Limit.","You have reached the max amount of tries. Please try again later.")
     else:
