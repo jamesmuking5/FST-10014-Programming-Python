@@ -15,7 +15,7 @@ root.geometry("550x300")
 #Theme here
 set_appearance_mode("Dark")
 set_default_color_theme("blue")
-root.attributes("-alpha",0.95)
+root.attributes("-alpha",0.92)
 
 #making an empty frame
 logo_frame = CTkFrame(root,fg_color="transparent")

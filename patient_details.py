@@ -50,7 +50,7 @@ def pt_details_pt_view(root_home,username):
     patient_emer_contact=patient_details_tuple[15]
     
     #creating labels
-    welcome_text= CTkLabel(pt_details_pt_view, font=("Gadugi",18), text="Your patient details, "+full_name)
+    welcome_text= CTkLabel(pt_details_pt_view, font=("Gadugi",18), text="Your details, "+full_name)
     ic_label = CTkLabel(pt_details_pt_view,text="Identification Card Num.:")
     blood_pressure_label = CTkLabel(pt_details_pt_view,text="Blood Pressure:")
     spiro_oxy_label = CTkLabel(pt_details_pt_view,text="SpO2:")
@@ -161,7 +161,7 @@ def patient_check_right_wrong(pt_username):
 def pt_details_staff_view(root_home,username):
     pt_details_staff_view = CTkToplevel(root_home)
     pt_details_staff_view.title("MCB: Staff View")
-    pt_details_staff_view.geometry("450x850")               
+    pt_details_staff_view.geometry("450x820")               
     
     #Search bar for patient's IC
     search_bar = CTkEntry(pt_details_staff_view)
@@ -169,7 +169,7 @@ def pt_details_staff_view(root_home,username):
     search_bar.insert(0,"Search Patient via I.C.")
     
     #creating labels
-    welcome_text= CTkLabel(pt_details_staff_view, font=("Gadugi",18), text="Search for patient details, "+staff_details_collect(username),wraplength=400)
+    welcome_text= CTkLabel(pt_details_staff_view, font=("Gadugi",18), text="Search for your patient's details, "+staff_details_collect(username),wraplength=400)
     name_label = CTkLabel(pt_details_staff_view,text="Patient's name:")
     blood_pressure_label = CTkLabel(pt_details_staff_view,text="Blood Pressure:")
     spiro_oxy_label = CTkLabel(pt_details_staff_view,text="SpO2:")
