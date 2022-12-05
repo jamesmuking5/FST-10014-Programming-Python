@@ -1,58 +1,61 @@
-from tkinter import *
-from tkinter import ttk
+from customtkinter import *
+import tkinter
 import tkinter.messagebox as MessageBox
 from mysql import *
 import mysql.connector as mysql
 from PIL import ImageTk,Image
-from time import time
 import home_patient
 import home_staff
 
 #create base window and title and setting dimensions
-root = Tk()
+root = CTk()
 root.title("MCB Login")
-root.geometry("250x400")
+root.geometry("550x300")
 
-#adding themes from ttk
-style = ttk.Style(root)
-print(style.theme_names())
-current_theme = style.theme_use("alt")
+#Theme here
+set_appearance_mode("Dark")
+set_default_color_theme("blue")
+root.attributes("-alpha",0.95)
 
 #making an empty frame
-logo_frame = Frame(root)
-
-#making picture
-img = ImageTk.PhotoImage(Image.open("./images/logo.png"))
-image_container= Label(logo_frame,image=img)
-image_container.grid(row=1,column=0)
-
+logo_frame = CTkFrame(root,fg_color="transparent")
+logo_frame.grid(rowspan=12,padx=40,pady=20)
 #creating labels
-main_label = Label(logo_frame,text="My Clinical Board Login")
-username_label = Label(root, text="Username:", pady=10)
-password_label = Label(root, text="Password:")
+main_label = CTkLabel(logo_frame,text="My Clinical Board Login",font=("Gadugi",18),wraplength=150,justify="center")
+#frame position
+main_label.grid()
+#making picture
+img = CTkImage(Image.open("./images/logo.png"),size=(150,150))
+image_container= CTkLabel(logo_frame,image=img,text="")
+image_container.grid()
+
+#username password labels
+username_label = CTkLabel(root,text="Username:",font=("Gadugi",15))
+password_label = CTkLabel(root,text="Password:",font=("Gadugi",15))
+
+
 
 #creating entries
-username_entry = Entry(root)
-password_entry = Entry(root, show="*")
+username_entry = CTkEntry(root)
+password_entry = CTkEntry(root, show="*")
  
 #placing frames, labels and entries
-logo_frame.grid(row=0,column=0,rowspan=2,columnspan=7)
-username_label.grid(row=5, column=1)
-password_label.grid(row=6, column=1)
-username_entry.grid(row=5, column=4)
-password_entry.grid(row=6, column=4)
+username_label.grid(row=5,column=1,padx=10,rowspan=3)
+password_label.grid(row=7,column=1,padx=10,rowspan=3)
+username_entry.grid(row=5,column=2,rowspan=3)
+password_entry.grid(row=7,column=2,rowspan=3)
 
 #set focus to first entry
 username_entry.focus_set()
 
-#frame position
-main_label.grid(row=0, column=0)
-
 #Radio button
 staff_or_patient = StringVar(root,"1")
-staff_login = Radiobutton(root, text="Staff", variable=staff_or_patient, value="1").grid(row=3,column=1)
-patient_login = Radiobutton(root, text="Patient", variable=staff_or_patient, value="2").grid(row=3,column=4)
+staff_login = CTkRadioButton(root, fg_color="#0129DA", text="Staff", variable=staff_or_patient, value="1")
+patient_login = CTkRadioButton(root, fg_color="#0129DA",text="Patient", variable=staff_or_patient, value="2")
 
+#Position radio button
+staff_login.grid(row=2,column=2)
+patient_login.grid(row=3,column=2)
 
 
 #create function for login button
@@ -99,20 +102,15 @@ def login():
         MessageBox.showerror("Error.","This should not happen.")
         
 #creating a login button
-login_button = Button(root, text="Login", width=10, command=login)
-login_button.grid(row=8, column=1, columnspan=2)
-
-#shaping frames
-empty_frame_1 = Frame(root,width=30).grid(row=7,column=0)
-empty_frame_2 = Frame(root, height=30).grid(row=7, column=4)
-
+login_button = CTkButton(root, text="Login",command=login,width=40,fg_color="red")
+login_button.grid(row=13,column=2,padx=40,ipadx=40)
 def click_signup():
     import signup
     signup.signup(root)
 
 #creating a signup button
-signup_button = Button(root, text="Sign-up", width=10, command=click_signup)
-signup_button.grid(row=8, column=4, columnspan=2)
+signup_button = CTkButton(root, text="Sign-up", command=click_signup,width=15,fg_color="green")
+signup_button.grid(row=13,column=0)
 
 #starting the main loop
 root.mainloop()
