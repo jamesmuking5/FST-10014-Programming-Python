@@ -48,8 +48,8 @@ username_entry.focus_set()
 
 #Radio button
 staff_or_patient = StringVar(root,"1")
-staff_login = CTkRadioButton(root, fg_color="#0129DA", text="Staff", variable=staff_or_patient, value="1")
-patient_login = CTkRadioButton(root, fg_color="#0129DA",text="Patient", variable=staff_or_patient, value="2")
+staff_login = CTkRadioButton(root, fg_color="#00A3E9", text="Staff", variable=staff_or_patient, value="1")
+patient_login = CTkRadioButton(root, fg_color="#00A3E9",text="Patient", variable=staff_or_patient, value="2")
 
 #Position radio button
 staff_login.grid(row=2,column=2)

@@ -1,64 +1,64 @@
-#Signup window
-from tkinter import *
+from customtkinter import *
+import tkinter
 import tkinter.messagebox as MessageBox
 from mysql import *
 import mysql.connector as mysql
 from PIL import ImageTk,Image
 
 def signup(root):
-    root_signup = Toplevel(root)
+    root_signup = CTkToplevel(root)
     root_signup.title("New User Signup")
-    root_signup.geometry("400x400")
+    root_signup.geometry("390x650")
     
     #creating labels
-    title_label = Label(root_signup,text="My Clinical Board Sign-up",width=20,padx=10,pady=10)
-    name_label = Label(root_signup,text="Full Name:",pady=5,width=30, justify="left")
-    ic_label = Label(root_signup,text="Identification Card Number:",pady=5,width=30, justify="left")
-    password_label = Label(root_signup,text="New Password:",pady=5,width=30, justify="left")
-    password_label_check = Label(root_signup,text="New Password again:",pady=5,width=30, justify="left")
-    weight_label = Label(root_signup,text="Latest Weight(kg):",pady=5,width=30, justify="left")
-    height_label = Label(root_signup,text="Latest Height(cm):",pady=5,width=30, justify="left")
-    bmi_label = Label(root_signup,text="Latest BMI:",pady=5,width=30, justify="left")
-    allergy_label = Label(root_signup,text="Any allergies:",pady=5,width=30, justify="left")
-    contact_num_label = Label(root_signup,text="Contact Number:",pady=5,width=30, justify="left")
-    emer_contact_num_label = Label(root_signup,text="Emergency Contact Number:",pady=5,width=30, justify="left")
+    title_label = CTkLabel(root_signup,text="My Clinical Board Sign-up",font=("Calibri",18))
+    name_label = CTkLabel(root_signup,text="Full Name:",font=("Gadugi",15))
+    ic_label = CTkLabel(root_signup,text="Identification Card Number:",font=("Gadugi",15))
+    password_label = CTkLabel(root_signup,text="New Password:",font=("Gadugi",15))
+    password_label_check = CTkLabel(root_signup,text="New Password again:",font=("Gadugi",15))
+    weight_label = CTkLabel(root_signup,text="Latest Weight(kg):",font=("Gadugi",15))
+    height_label = CTkLabel(root_signup,text="Latest Height(cm):",font=("Gadugi",15))
+    bmi_label = CTkLabel(root_signup,text="Latest BMI:",font=("Gadugi",15))
+    allergy_label = CTkLabel(root_signup,text="Any allergies:",font=("Gadugi",15))
+    contact_num_label = CTkLabel(root_signup,text="Contact Number:",font=("Gadugi",15))
+    emer_contact_num_label = CTkLabel(root_signup,text="Emergency Contact Number:",font=("Gadugi",15))
     
     #setting grid position for labels
-    title_label.grid(row=0,column=0,columnspan=3)
-    name_label.grid(row=1,column=0,columnspan=2)
-    ic_label.grid(row=2, column=0,columnspan=2)
-    password_label.grid(row=3,column=0,columnspan=2)
-    password_label_check.grid(row=4,column=0,columnspan=2)
-    weight_label.grid(row=5,column=0,columnspan=2)
-    height_label.grid(row=6,column=0,columnspan=2)
-    bmi_label.grid(row=8,column=0,columnspan=2)
-    allergy_label.grid(row=9,column=0,columnspan=2)
-    contact_num_label.grid(row=10,column=0,columnspan=2)
-    emer_contact_num_label.grid(row=11,column=0,columnspan=2)
+    title_label.grid(row=0,column=0,columnspan=2,padx=30,pady=80)
+    name_label.grid(row=1,column=0,stick="w",padx=20)
+    ic_label.grid(row=2,column=0,stick="w",padx=20)
+    password_label.grid(row=3,column=0,stick="w",padx=20)
+    password_label_check.grid(row=4,column=0,stick="w",padx=20)
+    weight_label.grid(row=5,column=0,stick="w",padx=20)
+    height_label.grid(row=6,column=0,stick="w",padx=20)
+    bmi_label.grid(row=8,column=0,stick="w",padx=20)
+    allergy_label.grid(row=9,column=0,stick="w",padx=20)
+    contact_num_label.grid(row=10,column=0,stick="w",padx=20)
+    emer_contact_num_label.grid(row=11,column=0,stick="w",padx=20)
     
     #creating inputs
-    name_entry = Entry(root_signup)
-    ic_entry  = Entry(root_signup)
-    password_entry  = Entry(root_signup, show="*")
-    password_check_entry  = Entry(root_signup, show="*")
-    weight_entry = Entry(root_signup)
-    height_entry = Entry(root_signup)
-    bmi_entry  = Entry(root_signup)
-    allergy_entry  = Entry(root_signup)
-    contact_num_entry  = Entry(root_signup)
-    emer_contact_num_entry  = Entry(root_signup)
+    name_entry = CTkEntry(root_signup)
+    ic_entry  = CTkEntry(root_signup)
+    password_entry  = CTkEntry(root_signup, show="*")
+    password_check_entry  = CTkEntry(root_signup, show="*")
+    weight_entry = CTkEntry(root_signup)
+    height_entry = CTkEntry(root_signup)
+    bmi_entry  = CTkEntry(root_signup)
+    allergy_entry  = CTkEntry(root_signup)
+    contact_num_entry  = CTkEntry(root_signup)
+    emer_contact_num_entry  = CTkEntry(root_signup)
     
     #setting grid position for inputs
-    name_entry.grid(row=1,column=3)
-    ic_entry.grid(row=2,column=3)
-    password_entry.grid(row=3,column=3)
-    password_check_entry.grid(row=4,column=3)
-    weight_entry.grid(row=5,column=3)
-    height_entry.grid(row=6,column=3)
-    bmi_entry.grid(row=8,column=3)
-    allergy_entry.grid(row=9,column=3)
-    contact_num_entry.grid(row=10,column=3)
-    emer_contact_num_entry.grid(row=11,column=3)
+    name_entry.grid(row=1,column=1)
+    ic_entry.grid(row=2,column=1)
+    password_entry.grid(row=3,column=1)
+    password_check_entry.grid(row=4,column=1)
+    weight_entry.grid(row=5,column=1)
+    height_entry.grid(row=6,column=1)
+    bmi_entry.grid(row=8,column=1)
+    allergy_entry.grid(row=9,column=1)
+    contact_num_entry.grid(row=10,column=1)
+    emer_contact_num_entry.grid(row=11,column=1)
     
     #bmi calculator button function
     def calcBMI():
@@ -73,7 +73,8 @@ def signup(root):
             bmi_entry.insert(0, str(BMI))
         
     #bmi calculator button
-    bmi_button = Button(root_signup,text="Calculate BMI",width=10,command=calcBMI).grid(row=7,column=3)
+    bmi_button = CTkButton(root_signup,text="Calculate BMI",command=calcBMI,fg_color="#5F5F5F")
+    bmi_button.grid(row=7,column=1,pady=10)
     
     #reset button function
     def reset_signup():
@@ -94,7 +95,8 @@ def signup(root):
             MessageBox.showinfo("Ehe","Just kidding.")
                 
     #reset button
-    reset_all = Button(root_signup,text="Reset All",width=10,command=reset_signup, pady=10).grid(row=12,column=1)
+    reset_all = CTkButton(root_signup,text="Reset All",command=reset_signup,fg_color="#9C0606")
+    reset_all.grid(row=12,column=1,pady=20)
     
  
     #confirmed submit
@@ -125,21 +127,11 @@ def signup(root):
             root_signup.destroy()      
 
     #submit button
-    submit_button = Button(root_signup,text="Submit",width=10,command=submit_signup, pady=10).grid(row=12,column=3)
+    submit_button = CTkButton(root_signup,text="Submit",command=submit_signup,fg_color="#00C436").grid(row=13,column=1)
     
     #cancel button function
     def cancel():
         root_signup.destroy()
         
     #cancel button
-    cancel_button = Button(root_signup,text="Cancel",width=10,command=cancel, pady=10).grid(row=12,column=0)
-    
-    #adding an empty frame to the button of the buttons
-    empty_padding_frame = Frame(root_signup,height=30).grid(row=13,column=0,columnspan=3)
-    
-    #making an empty frame
-    # signup_frame = Frame(root_signup).grid(row=0,column=0)
-    # #making picture
-    # img = ImageTk.PhotoImage(Image.open("./logo.png"))
-    # image_container= Label(signup_frame,image=img)
-    # image_container.grid(row=1,column=0)
+    cancel_button = CTkButton(root_signup,text="Cancel",command=cancel,fg_color="#002CC4").grid(row=13,column=0,stick="w",padx=30)
