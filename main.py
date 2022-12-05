@@ -18,18 +18,6 @@ style = ttk.Style(root)
 print(style.theme_names())
 current_theme = style.theme_use("alt")
 
-#creating menu
-#themes list
-menu_root = Menu(root)
-filemenu_root = Menu(menu_root, tearoff=0)
-menu_root.add_cascade(label="Themes", menu=filemenu_root)
-filemenu_root.add_command(label="Theme 1", command="")
-filemenu_root = Menu(menu_root, tearoff=0)
-# filemenu_root.add_command=(label="Theme 2", command="")
-# filemenu_root.add_command=(label="Theme 3", command="")
-# filemenu_root.add_command=(label="Theme 4", command="")
-# filemenu_root.add_command=(label="Theme 5", command="")
-
 #making an empty frame
 logo_frame = Frame(root)
 
