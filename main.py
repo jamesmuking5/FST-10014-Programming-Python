@@ -47,14 +47,16 @@ password_entry.grid(row=7,column=2,rowspan=3)
 username_entry.focus_set()
 
 #Radio button
-staff_or_patient = StringVar(root,"1")
-staff_login = CTkRadioButton(root, fg_color="#00A3E9", text="Staff", variable=staff_or_patient, value="1")
-patient_login = CTkRadioButton(root, fg_color="#00A3E9",text="Patient", variable=staff_or_patient, value="2")
+# staff_or_patient = StringVar(root,"1")
+# staff_login = CTkRadioButton(root, fg_color="#00A3E9", text="Staff", variable=staff_or_patient, value="1")
+# patient_login = CTkRadioButton(root, fg_color="#00A3E9",text="Patient", variable=staff_or_patient, value="2")
+# #Position radio button
+# staff_login.grid(row=2,column=2)
+# patient_login.grid(row=3,column=2)
 
-#Position radio button
-staff_login.grid(row=2,column=2)
-patient_login.grid(row=3,column=2)
-
+# Substitute Radiobutton for Segmented
+staff_or_patient = CTkSegmentedButton(root, values=["Staff", "Patient"])
+staff_or_patient.grid(row=2,column=2,ipadx=40)
 
 #create function for login button
 tries=3
@@ -70,7 +72,7 @@ def login():
         MessageBox.showinfo("Oops!","All fields are required.")
                     
     #check if user exist
-    elif tries>0 and (staff_or_patient.get() == str(1)):
+    elif tries>0 and (staff_or_patient.get() == str("Staff")):
         #Import staff_login module
         import staff_login
         if staff_login.staff_login(username,password)==TRUE:            
@@ -82,7 +84,8 @@ def login():
         else:
             MessageBox.showerror("Error.","Please contact IT.")
                
-    elif tries>0 and (staff_or_patient.get() == str(2)):
+    elif tries>0 and (staff_or_patient.get() == str("Patient")):
+        
         #Import patient_login module
         import patient_login
         if patient_login.patient_login(username,password)==TRUE:
