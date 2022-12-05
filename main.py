@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 import tkinter.messagebox as MessageBox
 from mysql import *
 import mysql.connector as mysql
@@ -7,14 +8,32 @@ from time import time
 import home_patient
 import home_staff
 
+#create base window and title and setting dimensions
 root = Tk()
 root.title("MCB Login")
 root.geometry("250x400")
 
+#adding themes from ttk
+style = ttk.Style(root)
+print(style.theme_names())
+current_theme = style.theme_use("alt")
+
+#creating menu
+#themes list
+menu_root = Menu(root)
+filemenu_root = Menu(menu_root, tearoff=0)
+menu_root.add_cascade(label="Themes", menu=filemenu_root)
+filemenu_root.add_command(label="Theme 1", command="")
+filemenu_root = Menu(menu_root, tearoff=0)
+# filemenu_root.add_command=(label="Theme 2", command="")
+# filemenu_root.add_command=(label="Theme 3", command="")
+# filemenu_root.add_command=(label="Theme 4", command="")
+# filemenu_root.add_command=(label="Theme 5", command="")
+
 #making an empty frame
 logo_frame = Frame(root)
+
 #making picture
-global img
 img = ImageTk.PhotoImage(Image.open("./images/logo.png"))
 image_container= Label(logo_frame,image=img)
 image_container.grid(row=1,column=0)
@@ -23,8 +42,6 @@ image_container.grid(row=1,column=0)
 main_label = Label(logo_frame,text="My Clinical Board Login")
 username_label = Label(root, text="Username:", pady=10)
 password_label = Label(root, text="Password:")
-
-#creating menu
 
 #creating entries
 username_entry = Entry(root)
@@ -36,6 +53,9 @@ username_label.grid(row=5, column=1)
 password_label.grid(row=6, column=1)
 username_entry.grid(row=5, column=4)
 password_entry.grid(row=6, column=4)
+
+#set focus to first entry
+username_entry.focus_set()
 
 #frame position
 main_label.grid(row=0, column=0)
@@ -105,6 +125,6 @@ def click_signup():
 #creating a signup button
 signup_button = Button(root, text="Sign-up", width=10, command=click_signup)
 signup_button.grid(row=8, column=4, columnspan=2)
- 
+
 #starting the main loop
 root.mainloop()

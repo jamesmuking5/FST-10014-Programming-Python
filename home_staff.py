@@ -1,16 +1,16 @@
-#Signup window
 from tkinter import *
 import tkinter.messagebox as MessageBox
 from mysql import *
 import mysql.connector as mysql
 from PIL import ImageTk,Image
 
+#Create Home Page for staff
 def root_home(root,username,img):
    root_home = Toplevel(root)
    root_home.title ("My Clinical Board - Home")
    root_home.geometry("550x400")
    
-   #Make Sql Query for Full_name     
+   #Make SQL Query for full_name     
    conn = mysql.connect(host="localhost",user="root",password="microsoft123")
    
    #create cursor
@@ -21,12 +21,13 @@ def root_home(root,username,img):
    staff_login = cursor.fetchall()
    cursor.close()
    
+   #For single loop to retrieve tuple from list
    for x in staff_login:
-      print(x)
+      print("Retrieve",x,"from staff_login")
       
    full_name = x[4]
     
-   #creating labels
+   #creating Welcome
    title_label = Label(root_home,text="Welcome to My Clinical Board (Staff), "+full_name+".",font=("Times", 15),pady=50)
    
    #Grid position
