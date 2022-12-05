@@ -10,3 +10,4 @@ Before starting, read this:
     iv. pillow
 4. Install via command prompt: $pip install -U tkinter
 5. Launch main.py
+6. Source code can be accessed at https://github.com/jamesmuking5/FST-10014-Programming-Python
