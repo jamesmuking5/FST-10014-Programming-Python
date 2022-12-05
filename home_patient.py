@@ -45,11 +45,17 @@ def root_home(root,username,img):
       patient_details.pt_details_pt_view(root_home,username)
    def billing():
       MessageBox.showerror("Not lazy to do.","Work in Progress, will be available at next update.")
+   def hotline_click():
+      import messenger
+      MessageBox.showinfo("Hotline.",messenger.Hotline())
+   def faq_click():
+      import messenger
+      MessageBox.showinfo("FAQ",messenger.faq())
    #making the 4 main buttons
    billing_button = CTkButton(root_home, text="Billing Information", command=billing,fg_color="transparent")
    patient_details_button = CTkButton(root_home, text="Your Details", command=start_patient_details,fg_color="transparent")
-   hotline_button = CTkButton(root_home, text="Hotline",fg_color="transparent")
-   faq_button = CTkButton(root_home, text="F.A.Q.",fg_color="transparent")
+   hotline_button = CTkButton(root_home, text="Hotline",fg_color="transparent",command=hotline_click)
+   faq_button = CTkButton(root_home, text="F.A.Q.",fg_color="transparent",command=faq_click)
    
    #Grid positioning for buttons
    billing_button.grid(row=1,column=1,ipadx=40,ipady=40)
